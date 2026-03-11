@@ -74,6 +74,19 @@ public class DataInitializer implements ApplicationRunner {
         }
 
         // ===== USUARIOS =====
+
+        if (!userRepository.existsByEmail("admin2@loanflow.com")) {
+            userRepository.save(User.builder()
+                    .name("Prueba1")
+                    .email("admin2@loanflow.com")
+                    .password(passwordEncoder.encode("password123"))
+                    .dni("12345679")
+                    .phone("999000002")
+                    .role(Role.ADMIN)
+                    .build());
+        }
+
+
         if (!userRepository.existsByEmail("admin@loanflow.com")) {
             userRepository.save(User.builder()
                     .name("Admin LoanFlow")
